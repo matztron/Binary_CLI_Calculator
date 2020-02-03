@@ -1,0 +1,39 @@
+Aufgabe A2   Auswertung boolscher Ausdrücke
+
+
+Aufgabenstellung
+
+
+Es sollen durch den Benutzer eingegebene boolsche Ausdrücke auf korrekte Syntax überprüft und ausgewertet werden (als Wahrheitstabelle)
+
+
+
+
+Anforderungen an die SW:
+
+•	Benutzereingabe eines boolschen Ausdrucks soll möglich sein
+•	Die korrekte Syntax wird geprüft.
+•	Ist die Syntax korrekt wird eine Wahrheitstabelle erstellt und ausgegeben
+
+
+Aufgaben:
+
+•	Es müssen die Syntaxregeln schriftlich festgelegt werden, die gültigen Zeichen usw. 
+•	Entwurf eines Klassendiagramms (einschl. graf. Darstellung), dabei soll insbesondere auch der Aspekt der Ableitung von Klassen verwendet werden
+•	Erstellen des Codes
+•	Austesten und Demonstrieren der korrekten Funktionalität
+
+Genauer gesagt:
+Die boolschen Ausdrücke werden folgendermaßen eingegeben:
+
+AND ( a OR b )
+
+Dabei sollen mindestens die folgenden Operatoren realisiert werden:
+
+• AND
+• OR
+• NOT
+
+
+
+
