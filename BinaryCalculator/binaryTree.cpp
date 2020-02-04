@@ -65,12 +65,26 @@ void Btree::plotTree(Node * parent)
 
     if (parent->left != NULL)
     {
-        std::cout << "I am " << parent->token.type << " I have a left child called: " << parent->left->token.type << std::endl;
+        if (parent->left->token.type == VAR)
+        {
+            std::cout << "I am " << parent->token.type << " I have a left child called: " << parent->left->token.value << std::endl;
+        }
+        else
+        {
+            std::cout << "I am " << parent->token.type << " I have a left child called: " << parent->left->token.type << std::endl;
+        }
         plotTree(parent->left);
     }
     if (parent->right != NULL)
     {
-        std::cout << "I am " << parent->token.type << " I have a right child called: " << parent->right->token.type << std::endl;
+        if (parent->right->token.type == VAR)
+        {
+            std::cout << "I am " << parent->token.type << " I have a right child called: " << parent->right->token.value << std::endl;
+        }
+        else
+        {
+            std::cout << "I am " << parent->token.type << " I have a right child called: " << parent->right->token.type << std::endl;
+        }
         plotTree(parent->right);
     }
 }
