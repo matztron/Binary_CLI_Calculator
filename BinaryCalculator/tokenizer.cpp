@@ -18,7 +18,7 @@ Token Tokenizer::getToken()
     index = index + 1;
 
     //Check if reached end of input string
-    if (index >= input_length - 1) {
+    if (index > input_length - 1) {
         //std::cout << "end of input!" << std::endl;
         //Reached end of input string (NONE symbolizes end of input)
         return Token(NONE,"0", index);
@@ -31,9 +31,23 @@ Token Tokenizer::getToken()
         index = index + 1;
         currentSymbol = input.at(index);
     }
-
+    
+    //Brackets
+    if (currentSymbol == '(')
+    {
+        // (
+        return Token(BRC_OPEN,"",index);
+    }
+    else if (currentSymbol == ')')
+    {
+        // )
+        return Token(BRC_CLOSE,"",index);
+    }
+    
     std::string word = peekAlphabetic(index);
-
+    //to uppercase | not sure if I keep it...
+    //std::transform(word.begin(), word.end(),word.begin(), ::toupper);
+    
     //Debug
     //std::cout << "---" << std::endl;
     //std::cout << "current index: " << index << std::endl;
@@ -76,26 +90,16 @@ Token Tokenizer::getToken()
         // XOR
         return Token(XOR,"",index);   
     }
-    else if (word == "(") 
-    {
-        // (
-        return Token(BRC_OPEN,"",index);
-    }
-    else if (word == ")") 
-    {
-        // )
-        return Token(BRC_CLOSE,"",index);
-    }
-    else if (word == "1" || word == "TRUE") 
+    /*else if (word == "1" || word == "TRUE")
     {
         // TRUE
         return Token(TRUE,"",index);
-    }
-    else if (word == "0" || word == "FALSE") 
+    }*/
+    /*else if (word == "0" || word == "FALSE")
     {
         // FALSE
         return Token(FALSE,"",index);
-    }
+    }*/
     else
     {
         // VAR
@@ -112,7 +116,7 @@ Token Tokenizer::getToken()
 //Peek
 std::string Tokenizer::peekAlphabetic(int peekIndex)
 {
-    if (!isalpha(input[peekIndex]) && input[peekIndex] != '1' && input[peekIndex] != '0' && input[peekIndex] != '(' && input[peekIndex] != ')') 
+    if (!isalpha(input[peekIndex]) /*&& input[peekIndex] != '(' && input[peekIndex] != ')'*/) 
     {
         //Return "nothing" and jump over the word
         index = peekIndex - 1;

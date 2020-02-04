@@ -25,11 +25,12 @@ int main(int argc, char const *argv[])
 {
     string input;
     //getline(cin, input);
-    input = "a"; //(debug) standard input
+    input = "   OR(a b)"; //(debug) standard input
 
     //Problem when:
-    // a) NOT überall
-    // b) eine einzelne VAR hinten
+    // a) NOT überall fixed i guess
+    // b) eine einzelne VAR <- improve tokenizer
+    // c) spaces should not be necessary
     
     //Debug
     //cout << input << endl;

@@ -39,7 +39,7 @@ void Parser::readTokens(std::vector<Token> subTokens, Node* parent, int pos)
     }
     else if (subTokens[pos].type == NOT) 
     {
-        std::vector<Token> bracketContent = getBracketContent(subTokens, pos + 1);
+        std::vector<Token> bracketContent = getBracketContent(subTokens, pos);
 
         Node* newNode = new Node;
         newNode->token = subTokens[pos];
@@ -64,13 +64,13 @@ void Parser::readTokens(std::vector<Token> subTokens, Node* parent, int pos)
 
         //schaue nochmal aber eins weiter rechts
         //hier muss man auch überprüfen ob der token ganz am Ende auch wieder eine schließende Klammer ist
-        readTokens(subTokens, parent, pos++);
+        throw GenericException("Don't use pointless brackets", subTokens[0].index);
+        //readTokens(subTokens, parent, pos++);
     }
     else
     {
-        //ist nur einene variable
         // what should I do now?
-        //kann ja eig nur bei einem not oder bei nur 1ner var im Input auftreten
+        //std::cout << "Help!" << std::endl;
     }
     
 }

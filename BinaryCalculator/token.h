@@ -15,9 +15,9 @@ typedef enum
     BRC_OPEN    = 7,
     BRC_CLOSE   = 8,
     NONE        = 9,
-    EQ          = 10,
-    TRUE        = 11,
-    FALSE       = 12
+    EQ          = 10
+    //TRUE        = 11,
+    //FALSE       = 12
 } TokenType;
 
 class Token 
