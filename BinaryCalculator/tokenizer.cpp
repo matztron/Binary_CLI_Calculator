@@ -18,7 +18,7 @@ Token Tokenizer::getToken()
     index = index + 1;
 
     //Check if reached end of input string
-    if (index > input_length - 1) {
+    if (index >= input_length) {
         //std::cout << "end of input!" << std::endl;
         //Reached end of input string (NONE symbolizes end of input)
         return Token(NONE,"0", index);
@@ -29,7 +29,15 @@ Token Tokenizer::getToken()
     //Filter out spaces
     while (currentSymbol == ' ') {
         index = index + 1;
-        currentSymbol = input.at(index);
+        if (index < input_length)
+        {
+            currentSymbol = input.at(index);
+        }
+        else
+        {
+            //Reached end of input
+            return Token(NONE,"0", index);
+        }
     }
     
     //Brackets

@@ -25,7 +25,7 @@ int main(int argc, char const *argv[])
 {
     string input;
     //getline(cin, input);
-    input = "   OR(a b)"; //(debug) standard input
+    input = "   OR(a b) "; //(debug) standard input
 
     //Problem when:
     // a) NOT überall fixed i guess
