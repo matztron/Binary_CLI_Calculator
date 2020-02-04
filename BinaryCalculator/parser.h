@@ -24,11 +24,10 @@ class Parser
         std::vector<Token> getFirstOperand(std::vector<Token> subTokens);
         std::vector<Token> getSecondOperand(std::vector<Token> subTokens);
 
-        //std::vector<int>
         int findClosingBracket(int openingBracketIndex , std::vector<Token> subTokens);
 
 
-        void addChildren();
+        //void addChildren();
 
 
     private:

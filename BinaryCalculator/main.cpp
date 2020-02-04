@@ -25,8 +25,12 @@ int main(int argc, char const *argv[])
 {
     string input;
     //getline(cin, input);
-    input = "AND ( OR ( a b ) NOT ( b ) )";
+    input = "a"; //(debug) standard input
 
+    //Problem when:
+    // a) NOT überall
+    // b) eine einzelne VAR hinten
+    
     //Debug
     //cout << input << endl;
 
@@ -48,15 +52,36 @@ int main(int argc, char const *argv[])
 
         //Parser parser(tokenizer.collect());
         Parser parser(tst);
-        //parser.readTokens(tst,);
+        parser.readTokens(tst, parser.tree->root, 0);
+        parser.tree->plotTree(parser.tree->root);
         //test input AND ( OR ( a b ) c )
-        // std::vector<Token> tstTwo = parser.getBracketContent(tst ,1);
-
+        //std::vector<Token> tstTwo = parser.getBracketContent(tst , 0);
+        
+        //test findClosingBracket
+        //int closing = parser.findClosingBracket(0, tst);
+        //std::cout << "CLOSING: " << closing << std::endl;
+        
+        //test getSecondOperand and getFirstOperand
+        /*std::vector<Token> tstThree = parser.getFirstOperand(tstTwo);
+        std::vector<Token> tstFour = parser.getSecondOperand(tstTwo);
+        std::cout << "First operand:" << std::endl;
+        std::cout << "------------------" << std::endl;
+        for (int i = 0; i < tstThree.size(); i++)
+        {
+            std::cout << tstThree[i].value << " Type: " << tstThree[i].type << std::endl;
+        }
+        
+        std::cout << "Second operand:" << std::endl;
+        for (int i = 0; i < tstFour.size(); i++)
+        {
+            std::cout << tstFour[i].value << " Type: " << tstFour[i].type << std::endl;
+        }*/
+        
         //!! !
         //parser.readTokens(tst,parser.tree->root, 0);
-        //parser.getBracketContent(tst, 0); //ERROR
         //parser.tree->plotTree(parser.tree->root);
         //debug
+        
         //std::cout << "Length of vector: " << tst.size() << std::endl;
         /*std::cout << "------------------" << std::endl;
         std::cout << "Subline" << std::endl;
@@ -76,7 +101,7 @@ int main(int argc, char const *argv[])
         
         //---
         //DEBUG: Binary Tree
-        Btree *tree = new Btree();
+        /*Btree *tree = new Btree();
         
         //test nodes
         Node* node_one = new Node;
@@ -95,15 +120,16 @@ int main(int argc, char const *argv[])
         node_three->token = token_three;
         
         tree->insert(node_one, tree->root);
-        tree->insert(node_two, tree->root);
+        tree->insert(node_two, node_one);
         //tree->insert(node_three, tree->root);
         
-        tree->insert(node_three, node_one);
-        tree->insert(node_three, node_two);
+        //tree->insert(node_three, node_one);
+        //tree->insert(node_three, node_two);
         //plot the result
         tree->plotTree(tree->root);
         //delete tree; ???
         //---
+        */
         
         //---
         /*tree->insert(10);
