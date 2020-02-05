@@ -20,6 +20,39 @@ int Parser::countVariables()
     return count;
 }
 
+//Count operands
+int Parser::countOperands(std::vector<Token> subTokens)
+{
+    int count = 0;
+    // Get this: NOT(b) OR(b d) d AND ( s a )
+    // return 4
+    for (int i = 0; i < subTokens.size(); i++) {
+        //If it is anything with brackets:
+        if (subTokens[i].type == AND || subTokens[i].type == OR || subTokens[i].type == NOT) {
+            
+            count++;
+            
+            if (subTokens[i + 1].type == BRC_OPEN) {
+                i = findClosingBracket(i, subTokens);
+            }
+            else
+            {
+                throw GenericException("Expected opening bracket", subTokens[i].index);
+            }
+        }
+        else if (subTokens[i].type == VAR)
+        {
+            count++;
+        }
+        else if (subTokens[i].type == NONE)
+        {
+            //reached end of list
+            return count;
+        }
+    }
+    throw GenericException("I dont know what this error would be... (from Parser::countOperands)", subTokens[0].index);
+}
+
 //Read next sublist of vectors
 void Parser::readTokens(std::vector<Token> subTokens, Node* parent, int pos)
 {
@@ -78,6 +111,10 @@ void Parser::readTokens(std::vector<Token> subTokens, Node* parent, int pos)
 void Parser::getMonoOperator(std::vector<Token> subTokens, Node* parent)
 {
     std::vector<Token> first = getFirstOperand(subTokens);
+    
+    if (countOperands(subTokens) > 1) {
+        throw GenericException("Too many operands provided. Only 1 expected", subTokens[0].index);
+    }
 
     //call again for first
     readTokens(first, parent, 0);
@@ -87,6 +124,10 @@ void Parser::getDualOperator(std::vector<Token> subTokens, Node* parent)
 {
     std::vector<Token> first = getFirstOperand(subTokens);
     std::vector<Token> second = getSecondOperand(subTokens);
+    
+    if (countOperands(subTokens) > 2) {
+        throw GenericException("Too many operands provided. Only 2 expected", subTokens[0].index);
+    }
 
     //call again for first & second
     readTokens(first, parent, 0);
@@ -116,7 +157,7 @@ std::vector<Token> Parser::getFirstOperand(std::vector<Token> subTokens)
     else if (subTokens[0].type == NONE)
     {
         //there is no operand
-        throw GenericException("Operator needs argument(s)", subTokens[0].index);
+        throw GenericException("Operator needs more argument(s)", subTokens[0].index);
     }
     else
     {

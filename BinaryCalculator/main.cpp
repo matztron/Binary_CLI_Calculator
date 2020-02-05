@@ -25,12 +25,12 @@ int main(int argc, char const *argv[])
 {
     string input;
     //getline(cin, input);
-    input = "   OR(a b) "; //(debug) standard input
+    input = "   AND ( NOT(q p) AND(g f) )"; //(debug) standard input
 
     //Problem when:
-    // a) NOT überall fixed i guess
-    // b) eine einzelne VAR <- improve tokenizer
-    // c) spaces should not be necessary
+    // a) too few of stuff is throwing errors BUT too much of stuff isn't!
+    //          idea:   when you have found all you need the next token should be a NONE token
+    //                  if this isnt the case then a error should be thrown
     
     //Debug
     //cout << input << endl;
@@ -52,11 +52,17 @@ int main(int argc, char const *argv[])
         std::cout << "------------------" << std::endl;
 
         //Parser parser(tokenizer.collect());
+        
+        //Main code:
         Parser parser(tst);
         parser.readTokens(tst, parser.tree->root, 0);
         parser.tree->plotTree(parser.tree->root);
+        
         //test input AND ( OR ( a b ) c )
         //std::vector<Token> tstTwo = parser.getBracketContent(tst , 0);
+        //test opcount
+        //int opCount = parser.countOperands(tstTwo);
+        //std::cout << "Operand count is: " << opCount << std::endl;
         
         //test findClosingBracket
         //int closing = parser.findClosingBracket(0, tst);
