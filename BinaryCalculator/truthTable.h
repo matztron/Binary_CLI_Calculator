@@ -29,6 +29,8 @@ public:
 
 
     TruthTable(int var_count);
+    
+    //~TruthTable();
 };
 
 

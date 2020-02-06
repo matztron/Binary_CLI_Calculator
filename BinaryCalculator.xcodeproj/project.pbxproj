@@ -13,6 +13,7 @@
 		8E0ADEE923E8453C0036B7FD /* token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E0ADEDE23E8453B0036B7FD /* token.cpp */; };
 		8E0ADEEA23E8453C0036B7FD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E0ADEE023E8453B0036B7FD /* main.cpp */; };
 		8E0ADEEB23E8453C0036B7FD /* binaryTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E0ADEE323E8453B0036B7FD /* binaryTree.cpp */; };
+		8E2D957123ECBE7A00B41455 /* calculator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E2D956F23ECBE7A00B41455 /* calculator.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,6 +43,8 @@
 		8E0ADEE323E8453B0036B7FD /* binaryTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = binaryTree.cpp; sourceTree = "<group>"; };
 		8E0ADEE423E8453B0036B7FD /* binaryTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = binaryTree.h; sourceTree = "<group>"; };
 		8E0ADEE523E8453B0036B7FD /* aufgabe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = aufgabe.txt; sourceTree = "<group>"; };
+		8E2D956F23ECBE7A00B41455 /* calculator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = calculator.cpp; sourceTree = "<group>"; };
+		8E2D957023ECBE7A00B41455 /* calculator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = calculator.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +90,8 @@
 				8E0ADEDB23E8453B0036B7FD /* tokenizer.h */,
 				8E0ADEDD23E8453B0036B7FD /* truthTable.cpp */,
 				8E0ADEE223E8453B0036B7FD /* truthTable.h */,
+				8E2D956F23ECBE7A00B41455 /* calculator.cpp */,
+				8E2D957023ECBE7A00B41455 /* calculator.h */,
 			);
 			path = BinaryCalculator;
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 				8E0ADEE823E8453C0036B7FD /* truthTable.cpp in Sources */,
 				8E0ADEE723E8453C0036B7FD /* tokenizer.cpp in Sources */,
 				8E0ADEEA23E8453C0036B7FD /* main.cpp in Sources */,
+				8E2D957123ECBE7A00B41455 /* calculator.cpp in Sources */,
 				8E0ADEEB23E8453C0036B7FD /* binaryTree.cpp in Sources */,
 				8E0ADEE923E8453C0036B7FD /* token.cpp in Sources */,
 			);

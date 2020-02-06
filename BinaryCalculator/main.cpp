@@ -25,7 +25,7 @@ int main(int argc, char const *argv[])
 {
     string input;
     //getline(cin, input);
-    input = "   AND ( NOT(q p) AND(g f) )"; //(debug) standard input
+    input = "AND ( NOT(a) NOT(c) )"; //(debug) standard input
 
     //Problem when:
     // a) too few of stuff is throwing errors BUT too much of stuff isn't!

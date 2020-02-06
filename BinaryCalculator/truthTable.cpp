@@ -5,6 +5,11 @@ TruthTable::TruthTable(int var_count)
     table = generateTable(var_count);
 }
 
+/*TruthTable::~TruthTable()
+{
+    //
+}*/
+
 bool** TruthTable::generateTable(int var_count) 
 {
     table_rows = std::pow(2,var_count);
