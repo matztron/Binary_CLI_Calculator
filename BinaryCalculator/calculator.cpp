@@ -9,26 +9,56 @@
 #include "calculator.h"
 
 //Constructor
-Calculator::Calculator(int var_count) : table(var_count)
+Calculator::Calculator(int var_count, std::vector<Token> tokens) : table(var_count)
 {
     //write true and false values into the table
     table.fillTable();
     
+    //populate Tupel vector
+    fillTupels(tokens);
+    
+    //start computing first row
+    computeRow_index = 0;
+    
+    //debug
     table.plotTable();
+    
 }
 
 //Calculate Parent and Children
 bool Calculator::calculateBooleanValue(Node* parent)
 {
-    if (parent->left != nullptr) {
+    /*if (parent->left != nullptr) {
         if (parent->left->token.type == VAR)
         {
             //return wahrheitswert
+            return lookUpVarValue(parent->left->token);
         }
         return true;
     }
     if (parent->right != nullptr) {
-        return true;
+        if (parent->right->token.type == VAR)
+        {
+            //return wahrheitswert
+            return lookUpVarValue(parent->right->token);
+        }
+    }*/
+    if (parent->token.type == VAR)
+    {
+        return lookUpVarValue(parent->token);
+    }
+    else if (parent->token.type == NOT)
+    {
+        //NOT operators only have left childs
+        return not_gate(calculateBooleanValue(parent->left));
+    }
+    else if (parent->token.type == AND)
+    {
+        return and_gate(calculateBooleanValue(parent->left), calculateBooleanValue(parent->right));
+    }
+    else if (parent->token.type == OR)
+    {
+        return or_gate(calculateBooleanValue(parent->left), calculateBooleanValue(parent->right));
     }
     //traverse tree
     //idea:
@@ -45,6 +75,43 @@ bool Calculator::calculateBooleanValue(Node* parent)
     return true;
 }
 
+bool Calculator::lookUpVarValue(Token token)
+{
+    int col_index;
+    //iterate through Tupels
+    for (int i = 0; i < tupels.size(); i++) {
+        
+        if (tupels[i].token.value == token.value)
+        {
+            //found the token
+            col_index = i;
+            //look up boolean value in TruthTable (and return it)
+            return table.getElement(computeRow_index, col_index);
+        }
+    }
+    //error case
+    //the variable I was looking for could not be found!
+    throw GenericException("Internal error. This has likely nothing to do with your input", token.index);
+}
+
+void Calculator::fillTupels(std::vector<Token> tokens)
+{
+    int count = 0;
+    
+    for (int i = 0; i < tokens.size(); i++) {
+        //If we found a VAR
+        if (tokens[i].type == VAR)
+        {
+            Tupel newTupel;
+            newTupel.token = tokens[i];
+            newTupel.col_index = count;
+            count++;
+            //Add it to Tupel with an unique index
+            tupels.push_back(newTupel);
+        }
+    }
+}
+
 bool Calculator::and_gate(bool op_one, bool op_two)
 {
     if (op_one == true && op_two == true) {
@@ -53,5 +120,28 @@ bool Calculator::and_gate(bool op_one, bool op_two)
     else
     {
         return false;
+    }
+}
+
+bool Calculator::or_gate(bool op_one, bool op_two)
+{
+    if (op_one == false && op_two == false) {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+
+bool Calculator::not_gate(bool op)
+{
+    if (op == true)
+    {
+        return false;
+    }
+    else
+    {
+        return  true;
     }
 }

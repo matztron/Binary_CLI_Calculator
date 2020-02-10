@@ -88,10 +88,10 @@
 				8E0ADEDF23E8453B0036B7FD /* token.h */,
 				8E0ADEDC23E8453B0036B7FD /* tokenizer.cpp */,
 				8E0ADEDB23E8453B0036B7FD /* tokenizer.h */,
-				8E0ADEDD23E8453B0036B7FD /* truthTable.cpp */,
 				8E0ADEE223E8453B0036B7FD /* truthTable.h */,
-				8E2D956F23ECBE7A00B41455 /* calculator.cpp */,
+				8E0ADEDD23E8453B0036B7FD /* truthTable.cpp */,
 				8E2D957023ECBE7A00B41455 /* calculator.h */,
+				8E2D956F23ECBE7A00B41455 /* calculator.cpp */,
 			);
 			path = BinaryCalculator;
 			sourceTree = "<group>";

@@ -69,10 +69,12 @@ void TruthTable::fillTable()
             if (std::pow(2,col) <= difference) 
             {
                 difference -= std::pow(2,col);
+                //Insert the value (for row) the other way around
                 table[row][table_columns - col - 1] = true;
             }
             else
             {
+                //Insert the value (for row) the other way around
                 table[row][table_columns - col - 1] = false;
             }   
         }   
@@ -93,7 +95,7 @@ void TruthTable::plotTable()
     }
 }
 
-void TruthTable::getTable() 
+bool TruthTable::getElement(int row, int col)
 {
-    return;
+    return table[row][col];
 }

@@ -25,7 +25,8 @@ public:
 
     void plotTable();
 
-    void getTable();
+    //Get an element from the table
+    bool getElement(int row, int col);
 
 
     TruthTable(int var_count);

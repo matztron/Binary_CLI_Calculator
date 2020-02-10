@@ -59,7 +59,7 @@ int main(int argc, char const *argv[])
         parser.readTokens(tst, parser.tree->root, 0);
         parser.tree->plotTree(parser.tree->root);
         
-        Calculator calc(3);
+        Calculator calc(3, tst);
         
         //test input AND ( OR ( a b ) c )
         //std::vector<Token> tstTwo = parser.getBracketContent(tst , 0);
@@ -211,3 +211,10 @@ int main(int argc, char const *argv[])
 
 //Proper exception catching implementation:
 //https://stackoverflow.com/questions/1055387/throw-keyword-in-functions-signature
+
+//New TODO
+// 1. Make it operational <-
+// 2. Make stuff private that can be private
+// 3. INtroduce destructors
+// 4. Cleanup
+// 5. Draw diagrams
