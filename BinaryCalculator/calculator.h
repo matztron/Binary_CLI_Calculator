@@ -10,6 +10,7 @@
 #define calculator_hpp
 
 #include "truthTable.h"
+#include "binaryTree.h"
 
 class Calculator
 {
@@ -19,9 +20,10 @@ public:
     
     TruthTable table;
     
-    bool calculate();
+    bool calculateBooleanValue(Node* parent);
     
 private:
+    bool and_gate(bool op_one, bool op_two);
 };
 
 #endif /* calculator_hpp */

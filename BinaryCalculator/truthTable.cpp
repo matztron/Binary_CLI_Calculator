@@ -46,6 +46,7 @@ bool** TruthTable::generateTable(int var_count)
 
 void TruthTable::fillTable() 
 {
+    //currently:
     //lsb  msb
     // 0 0 0 | 0
     // 1 0 0 | 1 
@@ -68,11 +69,11 @@ void TruthTable::fillTable()
             if (std::pow(2,col) <= difference) 
             {
                 difference -= std::pow(2,col);
-                table[row][col] = true;
+                table[row][table_columns - col - 1] = true;
             }
             else
             {
-                table[row][col] = false;
+                table[row][table_columns - col - 1] = false;
             }   
         }   
     }

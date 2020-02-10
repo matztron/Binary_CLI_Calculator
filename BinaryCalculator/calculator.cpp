@@ -11,12 +11,25 @@
 //Constructor
 Calculator::Calculator(int var_count) : table(var_count)
 {
-    //lol
+    //write true and false values into the table
+    table.fillTable();
+    
+    table.plotTable();
 }
 
 //Calculate Parent and Children
-bool Calculator::calculate()
+bool Calculator::calculateBooleanValue(Node* parent)
 {
+    if (parent->left != nullptr) {
+        if (parent->left->token.type == VAR)
+        {
+            //return wahrheitswert
+        }
+        return true;
+    }
+    if (parent->right != nullptr) {
+        return true;
+    }
     //traverse tree
     //idea:
     //  * start at root
@@ -30,4 +43,15 @@ bool Calculator::calculate()
     //  *- ???
     //  *- Profit!
     return true;
+}
+
+bool Calculator::and_gate(bool op_one, bool op_two)
+{
+    if (op_one == true && op_two == true) {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }

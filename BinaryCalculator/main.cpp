@@ -17,6 +17,7 @@
 #include <vector>
 #include "truthTable.h"
 #include "binaryTree.h"
+#include "calculator.h"
 //---
 
 using namespace std;
@@ -57,6 +58,8 @@ int main(int argc, char const *argv[])
         Parser parser(tst);
         parser.readTokens(tst, parser.tree->root, 0);
         parser.tree->plotTree(parser.tree->root);
+        
+        Calculator calc(3);
         
         //test input AND ( OR ( a b ) c )
         //std::vector<Token> tstTwo = parser.getBracketContent(tst , 0);
