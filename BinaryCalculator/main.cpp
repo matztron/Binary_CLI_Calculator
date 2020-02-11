@@ -30,7 +30,7 @@ int main(int argc, char const *argv[])
     string input;
     
     //getline(cin, input);
-    input = "and(NOT(OR(a a)) b)"; //(debug) standard input <-that works
+    input = "and(aprikose mango)"; //(debug) standard input <-that works
     // AND(AND(AND(a b) b) c) doesnt work
 
     try
@@ -63,6 +63,8 @@ int main(int argc, char const *argv[])
             calc.computeRow_index++;
             std::cout << "ENDRESULT: " << result << std::endl;
         }
+        
+        calc.printResult();
         
     }
     catch(const GenericException& e)

@@ -38,6 +38,7 @@ public:
     //Traverse tree and calculate each parent. Return global truth value
     bool calculateBooleanValue(Node* parent);
     
+    void printResult();
     
     //Holds the VAR and truthValue (col_index)
     std::vector<Tupel> tupels;

@@ -64,11 +64,21 @@ void TruthTable::fillTable()
 }
 
 //Plot the table for displaying the calculation result
-void TruthTable::plotTable() 
+/*void TruthTable::plotTable()
 {
+    //┌─┬─┐  ╔══╦══╗ ╒══╤══╕ ╓──╥──╖
+    //│1│0│  ║  ║  ║ │  │  │ ║  ║  ║
+    //├─┼─┤  ╠══╬══╣ ╞══╪══╡ ╟──╫──╢
+    //│0│1│  ║  ║  ║ │  │  │ ║  ║  ║
+    //└─┴─┘  ╚══╩══╝ ╘══╧══╛ ╙──╨──╜
+    
+    //Draw varaiable head
+    
     for (size_t i = 0; i < table_rows; i++)
     {
+        //draw the delimiter line for prev. row
         std::cout << "---------------" << std::endl;
+        
         //From right to left
         for (size_t j = 0; j < table_columns; j++)
         {
@@ -76,7 +86,7 @@ void TruthTable::plotTable()
         }
         std::cout << std::endl;
     }
-}
+}*/
 
 //Give back one cell of the truthTable
 bool TruthTable::getElement(int row, int col)

@@ -21,7 +21,7 @@ Calculator::Calculator(int var_count, std::vector<Token> tokens) : table(var_cou
     computeRow_index = 0;
     
     //debug
-    table.plotTable();
+    //table.plotTable();
     
 }
 
@@ -136,6 +136,89 @@ void Calculator::fillTupels(std::vector<Token> tokens)
             }
         }
     }
+}
+
+void Calculator::printResult()
+{
+    //┌─┬─┐  ╔══╦══╗ ╒══╤══╕ ╓──╥──╖
+    //c1│0│  ║  ║  ║ │  │  │ ║  ║  ║
+    //├─┼─┤  ╠══╬══╣ ╞══╪══╡ ╟──╫──╢
+    //│0│1│  ║  ║  ║ │  │  │ ║  ║  ║
+    //└─┴─┘  ╚══╩══╝ ╘══╧══╛ ╙──╨──╜
+    
+    string rowDelimiter;
+    std::vector<int> colWidths;
+    
+    //Get column widths
+    for (int i = 0; i < tupels.size(); i++) {
+        int count = 0;
+        for (int j = 0; j < tupels[i].token.value.length(); j++) {
+            count++;
+        }
+        colWidths.push_back(count);
+    }
+    
+    //Build delimiter line
+    rowDelimiter.append("├");
+    for (int i = 0; i < colWidths.size(); i++) {
+        for (int j = 0; j < colWidths[i]; j++) {
+            rowDelimiter.append("─");
+        }
+        rowDelimiter.append("┼");
+    }
+    rowDelimiter.append("┤");
+    
+    //Print upper border
+    std::cout << "┌";
+    for (int i = 0; i < colWidths.size(); i++)
+    {
+        for (int j = 0; j < colWidths[i]; j++)
+        {
+            std::cout << "─";
+        }
+        std::cout << "┬";
+    }
+    std::cout << "┐" << std::endl;
+    
+    //Print headline
+    std::cout << "│";
+    for (int i = 0; i < tupels.size(); i++)
+    {
+        //Print a VAR
+        std::cout << tupels[i].token.value << "│";
+        
+    }
+    std::cout << std::endl;
+    
+    //Print data with results at the end
+    for (int i = 0; i < table.table_rows; i++)
+    {
+        //draw the delimiter line for prev. row
+        std::cout << rowDelimiter << std::endl;
+        
+        //From right to left
+        for (int j = 0; j < table.table_columns; j++)
+        {
+            std::cout << "│";
+            std::cout << table.getElement(i, j);
+            for (int k = 1; k < colWidths[j]; k++) {
+                std::cout << " ";
+            }
+        }
+        std::cout << std::endl;
+    }
+    
+    //Print lower border
+    std::cout << "└";
+    for (int i = 0; i < colWidths.size(); i++)
+    {
+        for (int j = 0; j < colWidths[i]; j++)
+        {
+            std::cout << "─";
+        }
+        std::cout << "┴";
+    }
+    std::cout << "┘" << std::endl;
 }
 
 bool Calculator::and_gate(bool op_one, bool op_two)
