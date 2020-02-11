@@ -157,6 +157,8 @@ void Calculator::printResult()
         }
         colWidths.push_back(count);
     }
+    //dont forget about the Results column
+    colWidths.push_back(6);
     
     //Build delimiter line
     rowDelimiter.append("├");
@@ -188,6 +190,7 @@ void Calculator::printResult()
         std::cout << tupels[i].token.value << "│";
         
     }
+    std::cout << "RESULT" << "│";
     std::cout << std::endl;
     
     //Print data with results at the end
@@ -205,7 +208,12 @@ void Calculator::printResult()
                 std::cout << " ";
             }
         }
-        std::cout << std::endl;
+        std::cout << "│";
+        std::cout << table.resultColumn[i];
+        for (int k = 1; k < colWidths.back(); k++) {
+            std::cout << " ";
+        }
+        std::cout << "│" << std::endl;
     }
     
     //Print lower border
