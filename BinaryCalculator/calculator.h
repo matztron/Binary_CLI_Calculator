@@ -36,8 +36,6 @@ public:
     //Second var you find gets second value of row
     //...
     
-    //void calculateAllRows();
-    
     bool lookUpVarValue(Token token);
 
     bool calculateBooleanValue(Node* parent);
@@ -46,10 +44,10 @@ public:
     //Holds the VAR and truthValue (col_index)
     std::vector<Tupel> tupels;
     
-private:
     //current row of truthTable beeing computed
     int computeRow_index;
     
+private:
     //Traverse tree and remember Variables
     void fillTupels(std::vector<Token> tokens);
     

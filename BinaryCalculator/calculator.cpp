@@ -25,6 +25,14 @@ Calculator::Calculator(int var_count, std::vector<Token> tokens) : table(var_cou
     
 }
 
+//do this in main
+/*void Calculator::calculateAllRows()
+{
+    for (int i = 0; i < table.table_rows; i++) {
+        calculateBooleanValue()
+    }
+}*/
+
 //Calculate Parent and Children
 //INITIALLY HAND THIS FUNCTION THE LEFT CHILD OF ROOT BECAUSE ROOT IS A NONE TOKEN AND THEY AREN'T HANDLED!
 bool Calculator::calculateBooleanValue(Node* parent)
@@ -44,6 +52,7 @@ bool Calculator::calculateBooleanValue(Node* parent)
             return lookUpVarValue(parent->right->token);
         }
     }*/
+    
     if (parent->token.type == VAR)
     {
         return lookUpVarValue(parent->token);

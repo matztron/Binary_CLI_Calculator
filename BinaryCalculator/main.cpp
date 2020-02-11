@@ -26,7 +26,7 @@ int main(int argc, char const *argv[])
 {
     string input;
     //getline(cin, input);
-    input = "OR ( a abc )"; //(debug) standard input
+    input = "NOT(AND(a NOT(b)))"; //(debug) standard input
 
     //Problem when:
     // a) too few of stuff is throwing errors BUT too much of stuff isn't!
@@ -59,9 +59,15 @@ int main(int argc, char const *argv[])
         parser.readTokens(tst, parser.tree->root, 0);
         parser.tree->plotTree(parser.tree->root);
         
-        Calculator calc(3, tst);
-        bool result = calc.calculateBooleanValue(parser.tree->root->left);
-        std::cout << "ENDRESULT: " << result << std::endl;
+        Calculator calc(2, tst);
+        for (int i = 0; i < calc.table.table_rows; i++) {
+            bool result = calc.calculateBooleanValue(parser.tree->root->left);
+            calc.table.resultColumn.push_back(result);
+            calc.computeRow_index++;
+            std::cout << "ENDRESULT: " << result << std::endl;
+        }
+        //bool result = calc.calculateBooleanValue(parser.tree->root->left);
+        //std::cout << "ENDRESULT: " << result << std::endl;
         
         //test input AND ( OR ( a b ) c )
         //std::vector<Token> tstTwo = parser.getBracketContent(tst , 0);
@@ -216,6 +222,7 @@ int main(int argc, char const *argv[])
 
 //New TODO
 // 1. Make it operational <-
+// 2. Make it possible to write both upper- and lowercase operators
 // 2. Make stuff private that can be private
 // 3. INtroduce destructors
 // 4. Cleanup

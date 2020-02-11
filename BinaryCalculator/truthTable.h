@@ -3,23 +3,27 @@
 
 #include <cmath>
 #include <iostream>
-//#include <vector>
+#include <vector>
 
 class TruthTable
 {
 private:
     //holds the input combinations
     //bool** table;
-    int table_rows;
-    int table_columns;
 
     bool** generateTable(int var_count);
 
     //void fillTable();
 
     /*std::vector< std::vector<bool> >*/ bool** table;
+    
 
 public:
+    int table_rows;
+    int table_columns;
+    
+    std::vector<bool> resultColumn;
+    
     void fillTable();
     //---
 
