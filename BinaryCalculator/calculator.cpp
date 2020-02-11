@@ -26,6 +26,7 @@ Calculator::Calculator(int var_count, std::vector<Token> tokens) : table(var_cou
 }
 
 //Calculate Parent and Children
+//INITIALLY HAND THIS FUNCTION THE LEFT CHILD OF ROOT BECAUSE ROOT IS A NONE TOKEN AND THEY AREN'T HANDLED!
 bool Calculator::calculateBooleanValue(Node* parent)
 {
     /*if (parent->left != nullptr) {
@@ -60,6 +61,11 @@ bool Calculator::calculateBooleanValue(Node* parent)
     {
         return or_gate(calculateBooleanValue(parent->left), calculateBooleanValue(parent->right));
     }
+    else
+    {
+        //idk...
+        throw GenericException("Internal error. This has likely nothing to do with your input", 0);
+    }
     //traverse tree
     //idea:
     //  * start at root
@@ -72,7 +78,6 @@ bool Calculator::calculateBooleanValue(Node* parent)
     //  *- plot the truthTable
     //  *- ???
     //  *- Profit!
-    return true;
 }
 
 bool Calculator::lookUpVarValue(Token token)

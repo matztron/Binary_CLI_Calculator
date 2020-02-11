@@ -35,6 +35,9 @@ public:
     //First var you find gets first value of row
     //Second var you find gets second value of row
     //...
+    
+    //void calculateAllRows();
+    
     bool lookUpVarValue(Token token);
 
     bool calculateBooleanValue(Node* parent);

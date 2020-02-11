@@ -26,7 +26,7 @@ int main(int argc, char const *argv[])
 {
     string input;
     //getline(cin, input);
-    input = "AND ( NOT(a) NOT(c) )"; //(debug) standard input
+    input = "OR ( a abc )"; //(debug) standard input
 
     //Problem when:
     // a) too few of stuff is throwing errors BUT too much of stuff isn't!
@@ -60,6 +60,8 @@ int main(int argc, char const *argv[])
         parser.tree->plotTree(parser.tree->root);
         
         Calculator calc(3, tst);
+        bool result = calc.calculateBooleanValue(parser.tree->root->left);
+        std::cout << "ENDRESULT: " << result << std::endl;
         
         //test input AND ( OR ( a b ) c )
         //std::vector<Token> tstTwo = parser.getBracketContent(tst , 0);
