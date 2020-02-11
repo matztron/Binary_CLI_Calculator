@@ -30,7 +30,7 @@ int main(int argc, char const *argv[])
     string input;
     
     //getline(cin, input);
-    input = "AND(NOT(OR(a a)) b)"; //(debug) standard input <-that works
+    input = "and(NOT(OR(a a)) b)"; //(debug) standard input <-that works
     // AND(AND(AND(a b) b) c) doesnt work
 
     try

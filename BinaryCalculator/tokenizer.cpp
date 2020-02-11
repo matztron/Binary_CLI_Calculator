@@ -54,7 +54,7 @@ Token Tokenizer::getToken()
     
     std::string word = peekAlphabetic(index);
     //to uppercase | not sure if I keep it...
-    //std::transform(word.begin(), word.end(),word.begin(), ::toupper);
+    std::transform(word.begin(), word.end(),word.begin(), ::toupper);
     
     //Debug
     //std::cout << "---" << std::endl;
