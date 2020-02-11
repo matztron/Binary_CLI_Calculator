@@ -1,3 +1,11 @@
+//
+//  binaryTree.h
+//  BinaryCalculator
+//
+//  Created by Matthias Musch on 06.02.20.
+//  Copyright © 2020 Matthias Musch. All rights reserved.
+//
+
 #ifndef _BINARY_TREE_H_
 #define _BINARY_TREE_H_
 

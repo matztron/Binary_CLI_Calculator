@@ -1,5 +1,5 @@
 //
-//  calculator.hpp
+//  calculator.h
 //  BinaryCalculator
 //
 //  Created by Matthias Musch on 06.02.20.
@@ -27,17 +27,15 @@ public:
     
     Calculator(int var_count, std::vector<Token> tokens);
     
+    //the truth table
     TruthTable table;
+    
     int currentLine; //current line in TruthTable
     
-    //How to map VARS to cols in table? ???
-    //Traverse tree...
-    //First var you find gets first value of row
-    //Second var you find gets second value of row
-    //...
-    
+    //Get boolean value of token in context of current truthTable row
     bool lookUpVarValue(Token token);
 
+    //Traverse tree and calculate each parent. Return global truth value
     bool calculateBooleanValue(Node* parent);
     
     
@@ -51,6 +49,7 @@ private:
     //Traverse tree and remember Variables
     void fillTupels(std::vector<Token> tokens);
     
+    //Gates:
     bool and_gate(bool op_one, bool op_two);
     bool or_gate(bool op_one, bool op_two);
     bool not_gate(bool op);

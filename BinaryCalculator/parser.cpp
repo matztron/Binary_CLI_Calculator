@@ -20,6 +20,11 @@ int Parser::countVariables()
     return count;
 }
 
+int Parser::getVarCount()
+{
+    return countVariables();
+}
+
 //Count operands
 int Parser::countOperands(std::vector<Token> subTokens)
 {

@@ -1,3 +1,11 @@
+//
+//  parser.h
+//  BinaryCalculator
+//
+//  Created by Matthias Musch on 06.02.20.
+//  Copyright © 2020 Matthias Musch. All rights reserved.
+//
+
 #ifndef _PARSER_H_
 #define _PARSER_H_
 
@@ -15,33 +23,32 @@ class Parser
         Btree *tree;
 
         void readTokens(std::vector<Token> subTokens, Node* parent, int pos);
-        //void checkToken(std::vector<Token> subTokens);
-        void getMonoOperator(std::vector<Token> subTokens, Node* parent);
-        void getDualOperator(std::vector<Token> subTokens, Node* parent);
 
-        std::vector<Token> getBracketContent(std::vector<Token> subTokens, int index);
-
-        std::vector<Token> getFirstOperand(std::vector<Token> subTokens);
-        std::vector<Token> getSecondOperand(std::vector<Token> subTokens);
-    
-        int countOperands(std::vector<Token> subTokens);
-
-        int findClosingBracket(int openingBracketIndex , std::vector<Token> subTokens);
-
-
+        int getVarCount();
         //void addChildren();
 
 
     private:
         std::vector<Token> tokens;
 
-        //6
+        //Return the number of variables in user-input
         int countVariables();
+    
+        //Return the number of functions in user-input
+        int countOperands(std::vector<Token> subTokens);
+    
+        //Returns the sublist of tokens inside the brackets
+        std::vector<Token> getBracketContent(std::vector<Token> subTokens, int index);
+    
+        //
+        void getMonoOperator(std::vector<Token> subTokens, Node* parent);
+        void getDualOperator(std::vector<Token> subTokens, Node* parent);
 
-        //int tokenPos;
-        //smart stuff below
-
-        //std::vector<Token> getOperands(int index);
+        std::vector<Token> getFirstOperand(std::vector<Token> subTokens);
+        std::vector<Token> getSecondOperand(std::vector<Token> subTokens);
+        
+        //Returns index of corresponding closing bracket when index of operator is provided
+        int findClosingBracket(int operatorIndex , std::vector<Token> subTokens);
 };
 
 #endif // _PARSER_H_

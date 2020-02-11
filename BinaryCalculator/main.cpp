@@ -1,3 +1,11 @@
+//
+//  main.cpp
+//  BinaryCalculator
+//
+//  Created by Matthias Musch on 06.02.20.
+//  Copyright © 2020 Matthias Musch. All rights reserved.
+//
+
 //Build with:
 //[cmd] + [shift] + [b]
 //or
@@ -8,33 +16,21 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 #include "tokenizer.h"
 #include "parser.h"
 #include "exception.h"
-
-//debug
-#include <vector>
-#include "truthTable.h"
-#include "binaryTree.h"
 #include "calculator.h"
-//---
 
 using namespace std;
 
 int main(int argc, char const *argv[])
 {
     string input;
-    //getline(cin, input);
-    input = "NOT(AND(a NOT(b)))"; //(debug) standard input
-
-    //Problem when:
-    // a) too few of stuff is throwing errors BUT too much of stuff isn't!
-    //          idea:   when you have found all you need the next token should be a NONE token
-    //                  if this isnt the case then a error should be thrown
     
-    //Debug
-    //cout << input << endl;
+    //getline(cin, input);
+    input = "AND(AND(a NOT(b)) c)"; //(debug) standard input
 
     try
     {
@@ -52,118 +48,20 @@ int main(int argc, char const *argv[])
         }
         std::cout << "------------------" << std::endl;
 
-        //Parser parser(tokenizer.collect());
         
-        //Main code:
         Parser parser(tst);
+        
         parser.readTokens(tst, parser.tree->root, 0);
         parser.tree->plotTree(parser.tree->root);
         
-        Calculator calc(2, tst);
+        Calculator calc(parser.getVarCount(), tst);
+        
         for (int i = 0; i < calc.table.table_rows; i++) {
             bool result = calc.calculateBooleanValue(parser.tree->root->left);
             calc.table.resultColumn.push_back(result);
             calc.computeRow_index++;
             std::cout << "ENDRESULT: " << result << std::endl;
         }
-        //bool result = calc.calculateBooleanValue(parser.tree->root->left);
-        //std::cout << "ENDRESULT: " << result << std::endl;
-        
-        //test input AND ( OR ( a b ) c )
-        //std::vector<Token> tstTwo = parser.getBracketContent(tst , 0);
-        //test opcount
-        //int opCount = parser.countOperands(tstTwo);
-        //std::cout << "Operand count is: " << opCount << std::endl;
-        
-        //test findClosingBracket
-        //int closing = parser.findClosingBracket(0, tst);
-        //std::cout << "CLOSING: " << closing << std::endl;
-        
-        //test getSecondOperand and getFirstOperand
-        /*std::vector<Token> tstThree = parser.getFirstOperand(tstTwo);
-        std::vector<Token> tstFour = parser.getSecondOperand(tstTwo);
-        std::cout << "First operand:" << std::endl;
-        std::cout << "------------------" << std::endl;
-        for (int i = 0; i < tstThree.size(); i++)
-        {
-            std::cout << tstThree[i].value << " Type: " << tstThree[i].type << std::endl;
-        }
-        
-        std::cout << "Second operand:" << std::endl;
-        for (int i = 0; i < tstFour.size(); i++)
-        {
-            std::cout << tstFour[i].value << " Type: " << tstFour[i].type << std::endl;
-        }*/
-        
-        //!! !
-        //parser.readTokens(tst,parser.tree->root, 0);
-        //parser.tree->plotTree(parser.tree->root);
-        //debug
-        
-        //std::cout << "Length of vector: " << tst.size() << std::endl;
-        /*std::cout << "------------------" << std::endl;
-        std::cout << "Subline" << std::endl;
-        std::cout << "Subline len: " << tstTwo.size() << std::endl;
-        for (int i = 0; i < tstTwo.size(); i++)
-        {
-            std::cout << tstTwo[i].value << " Type: " << tstTwo[i].type << std::endl;
-        }*/
-        
-        //---
-        //DEBUG: Truthtable
-        //construct table object
-        //TruthTable table(3);
-        //table.fillTable();
-        //table.plotTable();
-        //---
-        
-        //---
-        //DEBUG: Binary Tree
-        /*Btree *tree = new Btree();
-        
-        //test nodes
-        Node* node_one = new Node;
-        Token token_one;
-        token_one.type = AND;
-        node_one->token = token_one;
-        
-        Node* node_two = new Node;
-        Token token_two;
-        token_two.type = OR;
-        node_two->token = token_two;
-        
-        Node* node_three = new Node;
-        Token token_three;
-        token_three.type = VAR;
-        node_three->token = token_three;
-        
-        tree->insert(node_one, tree->root);
-        tree->insert(node_two, node_one);
-        //tree->insert(node_three, tree->root);
-        
-        //tree->insert(node_three, node_one);
-        //tree->insert(node_three, node_two);
-        //plot the result
-        tree->plotTree(tree->root);
-        //delete tree; ???
-        //---
-        */
-        
-        //---
-        /*tree->insert(10);
-	    tree->insert(6);
-	    tree->insert(14);
-	    tree->insert(5);
-	    tree->insert(8);
-	    tree->insert(11);
-	    tree->insert(18);
-
-	    tree->preorder_print();
-	    tree->inorder_print();
-	    tree->postorder_print();
-
-	    //delete tree;*/
-        //---
         
     }
     catch(const GenericException& e)

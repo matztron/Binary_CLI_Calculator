@@ -78,7 +78,7 @@ Token Tokenizer::getToken()
         // NOT
         return Token(NOT,"",index);
     }
-    else if (word == "NAND")
+    /*else if (word == "NAND")
     {
         // NAND
         return Token(NAND,"",index);
@@ -97,28 +97,12 @@ Token Tokenizer::getToken()
     {
         // XOR
         return Token(XOR,"",index);   
-    }
-    /*else if (word == "1" || word == "TRUE")
-    {
-        // TRUE
-        return Token(TRUE,"",index);
-    }*/
-    /*else if (word == "0" || word == "FALSE")
-    {
-        // FALSE
-        return Token(FALSE,"",index);
     }*/
     else
     {
         // VAR
         return Token(VAR, word, index);
     }
-    
-    //get words and then look if they are a reserved word
-    // _x _x a _ _ _ b AND c
-
-    //wenn ein
-
 }
 
 //Peek
@@ -139,15 +123,6 @@ std::string Tokenizer::peekAlphabetic(int peekIndex)
 //Collect
 std::vector<Token> Tokenizer::collect() 
 {
-    /*std::vector<Token> tokens = std::vector<Token>();
-    tokens.push_back(getToken());
-    tokens.push_back(getToken());
-    tokens.push_back(getToken());
-    tokens.push_back(getToken());
-    tokens.push_back(getToken());
-    tokens.push_back(getToken());
-    return tokens;*/
-
     std::vector<Token> tokens = std::vector<Token>();
 
     tokens.push_back(getToken());

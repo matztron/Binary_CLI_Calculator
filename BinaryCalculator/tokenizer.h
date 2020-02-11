@@ -1,3 +1,11 @@
+//
+//  tokenizer.hpp
+//  BinaryCalculator
+//
+//  Created by Matthias Musch on 06.02.20.
+//  Copyright © 2020 Matthias Musch. All rights reserved.
+//
+
 #ifndef _TOKENIZE_H_
 #define _TOKENIZE_H_
 
@@ -14,6 +22,7 @@
 class Tokenizer 
 {
     public:
+        //Constructor
         Tokenizer(std::string input);
 
         //Create Token-List from user input
