@@ -111,17 +111,29 @@ bool Calculator::lookUpVarValue(Token token)
 void Calculator::fillTupels(std::vector<Token> tokens)
 {
     int count = 0;
+    //std::vector<string> alreadyFoundVars;
     
     for (int i = 0; i < tokens.size(); i++) {
         //If we found a VAR
         if (tokens[i].type == VAR)
         {
-            Tupel newTupel;
-            newTupel.token = tokens[i];
-            newTupel.col_index = count;
-            count++;
-            //Add it to Tupel with an unique index
-            tupels.push_back(newTupel);
+            bool found = false;
+            //check if we have seen it already
+            for (int j = 0; j < tupels.size(); j++) {
+                if (tokens[i].value == tupels[j].token.value)
+                {
+                    found = true;
+                }
+            }
+            if (found == false)
+            {
+                Tupel newTupel;
+                newTupel.token = tokens[i];
+                newTupel.col_index = count;
+                count++;
+                //Add it to Tupel with an unique index
+                tupels.push_back(newTupel);
+            }
         }
     }
 }

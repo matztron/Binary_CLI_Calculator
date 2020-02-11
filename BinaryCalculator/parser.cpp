@@ -9,12 +9,25 @@ Parser::Parser(std::vector<Token> tokens_)
 //Get the number of variables in the user input
 int Parser::countVariables() 
 {
+    std::vector<string> alreadyFoundVars;
     int count = 0;
     for (size_t i = 0; i < tokens.size(); i++)
     {
         if (tokens[i].type == VAR) 
         {
-            count++;
+            bool found = false;
+            for (int j = 0; j < alreadyFoundVars.size(); j++) {
+                if (tokens[i].value == alreadyFoundVars[j])
+                {
+                    found = true;
+                }
+            }
+            if (found == false)
+            {
+                count++;
+                //add current VAR to alreadyFound
+                alreadyFoundVars.push_back(tokens[i].value);
+            }
         }
     }
     return count;

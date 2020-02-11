@@ -44,7 +44,7 @@ public:
     //Constructor
     TruthTable(int var_count);
     
-    //~TruthTable();
+    ~TruthTable();
 };
 
 

@@ -30,23 +30,23 @@ int main(int argc, char const *argv[])
     string input;
     
     //getline(cin, input);
-    input = "AND(AND(a NOT(b)) c)"; //(debug) standard input
+    input = "AND(NOT(OR(a a)) b)"; //(debug) standard input <-that works
+    // AND(AND(AND(a b) b) c) doesnt work
 
     try
     {
         //Generate tokens
-        //std::cout << "Length of input: " << input.length() << std::endl;
         Tokenizer tokenizer(input);
 
         std::vector<Token> tst = tokenizer.collect();
 
         //debug
-        std::cout << "Length of vector: " << tst.size() << std::endl;
+        /*std::cout << "Length of vector: " << tst.size() << std::endl;
         for (size_t i = 0; i < tst.size(); i++)
         {
             std::cout << tst[i].value << " Type: " << tst[i].type << std::endl;
         }
-        std::cout << "------------------" << std::endl;
+        std::cout << "------------------" << std::endl;*/
 
         
         Parser parser(tst);
@@ -56,7 +56,8 @@ int main(int argc, char const *argv[])
         
         Calculator calc(parser.getVarCount(), tst);
         
-        for (int i = 0; i < calc.table.table_rows; i++) {
+        for (int i = 0; i < calc.table.table_rows; i++)
+        {
             bool result = calc.calculateBooleanValue(parser.tree->root->left);
             calc.table.resultColumn.push_back(result);
             calc.computeRow_index++;
@@ -80,43 +81,6 @@ int main(int argc, char const *argv[])
 
     return 0;
 }
-
-
-//---
-
-//either write: [prog_name] [binary equasion]
-//or just call ./[prog_name] and then afterwards in while-true loop write equasions
-
-// String wird von Tokenizer in Tokens umgewandelt und in Liste (vector) gespeichert
-// 
-
-//Reserved symbols:
-// AND
-// OR
-// NOT
-// XOR
-// NAND
-// NOR
-// EQ
-// (
-// )
-// TRUE
-// FALSE
-
-//Example: (A OR B) AND NOT C
-// TRUE AND TRUE
-
-// - Vorgehen -
-// 1. Input von User bekommen
-// 2. Tokens aus Userinput erzeugen
-// 3. Parse-Tree erzeugen!
-// 4. Anzahl der Variablen ermitteln und dementsprechend große Wertetabelle erzeugen
-// 5. Wahrheitswerte einsetzen
-// 6. Den Baum berechnen (von ganz unten nach oben)
-// 7. Wahrheitstabelle mit Ergebnissplate ausgeben
-
-//Proper exception catching implementation:
-//https://stackoverflow.com/questions/1055387/throw-keyword-in-functions-signature
 
 //New TODO
 // 1. Make it operational <-

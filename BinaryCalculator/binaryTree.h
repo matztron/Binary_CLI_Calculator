@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include "token.h"
+#include "exception.h"
 
 //source:   https://gist.github.com/toboqus/def6a6915e4abd66e922
 //          https://www.geeksforgeeks.org/print-binary-tree-2-dimensions/
