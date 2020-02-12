@@ -47,7 +47,7 @@ void Btree::insert(Node* newNode, Node* parent /*, Token leftChild, Token rightC
     }
 }
 
-void Btree::plotTree(Node * parent)
+/*void Btree::plotTree(Node * parent)
 {
     //std::cout << "Hello I am the " << parent->token.type << " And those are my children:" << std::endl;
 
@@ -75,4 +75,4 @@ void Btree::plotTree(Node * parent)
         }
         plotTree(parent->right);
     }
-}
+}*/

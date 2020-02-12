@@ -38,26 +38,15 @@ public:
 	Btree();
 	~Btree();
 
-	//void insert(int key);
-	//node *search(int key);
 	void destroy_tree();
-	//void inorder_print();
-	//void postorder_print();
-	//void preorder_print();
 
 	void insert(Node* newNode, Node* parent);
-    void plotTree(Node * parent);
+    //void plotTree(Node * parent);
 
 	Node *root;
 
 private:
 	void destroy_tree(Node *leaf);
-	//void insert(int key, node *leaf);
-	//node *search(int key, node *leaf);
-	//void inorder_print(node *leaf);
-	//void postorder_print(node *leaf);
-	//void preorder_print(node *leaf);
-
 };
 
 #endif //_BINARY_TREE_H_

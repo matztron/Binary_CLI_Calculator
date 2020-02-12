@@ -101,7 +101,7 @@ void Parser::readTokens(std::vector<Token> subTokens, Node* parent, int pos)
     }
     else if (subTokens[pos].type == VAR)
     {
-        std::cout << "I am a VAR!!!" << std::endl;
+        //std::cout << "I am a VAR!!!" << std::endl;
         Node* newNode = new Node;
         newNode->token = subTokens[pos];
 
@@ -290,22 +290,22 @@ std::vector<Token> Parser::getBracketContent(std::vector<Token> subTokens, int i
     //decrement for closing brackets
     for (int i = index + 1; i < subTokens.size(); i++)
     {
-        std::cout << "Index: " << i << std::endl;
-        std::cout << "Schleifeniteration Typ: " << subTokens[i].type << std::endl;
+        //std::cout << "Index: " << i << std::endl;
+        //std::cout << "Schleifeniteration Typ: " << subTokens[i].type << std::endl;
         if (subTokens[i].type == BRC_OPEN) 
         {
-            std::cout << "New opening klammer" << subTokens[i].type << std::endl;
+            //std::cout << "New opening klammer" << subTokens[i].type << std::endl;
             brackets++;
         }
         else if (subTokens[i].type == BRC_CLOSE) 
         {
-            std::cout << "New closing klammer" << subTokens[i].type << std::endl;
+            //std::cout << "New closing klammer" << subTokens[i].type << std::endl;
             brackets--;
         }
 
         if (brackets == 0) 
         {
-            std::cout << "BRACKETS EQUAL OUT!!!" << std::endl;
+            //std::cout << "BRACKETS EQUAL OUT!!!" << std::endl;
             //the right bracket to close off the original one has been found
             std::vector<Token> bracket_content = std::vector<Token>(subTokens.begin() + index + 2, subTokens.end() - (subTokens.size() - i));
             //Add a artificial NONE Token at the end to symbolise end of input

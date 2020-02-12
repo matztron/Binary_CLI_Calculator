@@ -29,9 +29,8 @@ int main(int argc, char const *argv[])
 {
     string input;
     
-    //getline(cin, input);
-    input = "and(not(ab) or(a b))"; //(debug) standard input <-that works
-    // AND(AND(AND(a b) b) c) doesnt work
+    getline(cin, input);
+    //input = "and(not(p) d)"; //(debug) standard input <-that works
 
     try
     {
@@ -52,7 +51,7 @@ int main(int argc, char const *argv[])
         Parser parser(tst);
         
         parser.readTokens(tst, parser.tree->root, 0);
-        parser.tree->plotTree(parser.tree->root);
+        //parser.tree->plotTree(parser.tree->root);
         
         Calculator calc(parser.getVarCount(), tst);
         
@@ -61,7 +60,7 @@ int main(int argc, char const *argv[])
             bool result = calc.calculateBooleanValue(parser.tree->root->left);
             calc.table.resultColumn.push_back(result);
             calc.computeRow_index++;
-            std::cout << "ENDRESULT: " << result << std::endl;
+            //std::cout << "ENDRESULT: " << result << std::endl;
         }
         
         calc.printResult();
