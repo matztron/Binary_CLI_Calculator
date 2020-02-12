@@ -140,11 +140,12 @@ void Calculator::fillTupels(std::vector<Token> tokens)
 
 void Calculator::printResult()
 {
-    //┌─┬─┐  ╔══╦══╗ ╒══╤══╕ ╓──╥──╖
-    //c1│0│  ║  ║  ║ │  │  │ ║  ║  ║
-    //├─┼─┤  ╠══╬══╣ ╞══╪══╡ ╟──╫──╢
-    //│0│1│  ║  ║  ║ │  │  │ ║  ║  ║
-    //└─┴─┘  ╚══╩══╝ ╘══╧══╛ ╙──╨──╜
+    //Should plot something like this:
+    //  ┌─┬─┐
+    //  │1│0│
+    //  ├─┼─┤
+    //  │0│1│
+    //  └─┴─┘
     
     string rowDelimiter;
     std::vector<int> colWidths;
@@ -158,7 +159,7 @@ void Calculator::printResult()
         colWidths.push_back(count);
     }
     //dont forget about the Results column
-    colWidths.push_back(6);
+    colWidths.push_back(6); //6 is the length of the string 'RESULT'
     
     //Build delimiter line
     rowDelimiter.append("├");
@@ -166,7 +167,10 @@ void Calculator::printResult()
         for (int j = 0; j < colWidths[i]; j++) {
             rowDelimiter.append("─");
         }
-        rowDelimiter.append("┼");
+        if (i < colWidths.size()-1)
+        {
+            rowDelimiter.append("┼");
+        }
     }
     rowDelimiter.append("┤");
     
@@ -178,7 +182,10 @@ void Calculator::printResult()
         {
             std::cout << "─";
         }
-        std::cout << "┬";
+        if (i < colWidths.size()-1)
+        {
+            std::cout << "┬";
+        }
     }
     std::cout << "┐" << std::endl;
     
@@ -224,7 +231,10 @@ void Calculator::printResult()
         {
             std::cout << "─";
         }
-        std::cout << "┴";
+        if (i < colWidths.size()-1)
+        {
+            std::cout << "┴";
+        }
     }
     std::cout << "┘" << std::endl;
 }

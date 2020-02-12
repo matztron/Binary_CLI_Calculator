@@ -9,7 +9,7 @@
 //Build with:
 //[cmd] + [shift] + [b]
 //or
-//g++ -o tst main.cpp tokenizer.cpp token.cpp truthTable.cpp binaryTree.cpp parser.cpp
+//g++ -o tst main.cpp tokenizer.cpp token.cpp truthTable.cpp binaryTree.cpp parser.cpp calculator.cpp
 
 //debug with:
 //[cmd] + [shift] + [d]
@@ -30,7 +30,7 @@ int main(int argc, char const *argv[])
     string input;
     
     //getline(cin, input);
-    input = "and(aprikose mango)"; //(debug) standard input <-that works
+    input = "and(not(ab) or(a b))"; //(debug) standard input <-that works
     // AND(AND(AND(a b) b) c) doesnt work
 
     try
