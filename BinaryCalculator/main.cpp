@@ -29,8 +29,13 @@ int main(int argc, char const *argv[])
 {
     string input;
     
-    getline(cin, input);
-    //input = "and(not(p) d)"; //(debug) standard input <-that works
+    //getline(cin, input);
+    input = "and(a or(c d))"; //(debug) standard input <-that works
+    
+    // Problem(s):
+    // * There can be stuff on global scope which doesn't mae sense
+    // * The stuff after the first expression will be ignored anyways
+    //   (since the left branch of the root node gets parsed)
 
     try
     {

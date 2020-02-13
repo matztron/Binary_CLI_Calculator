@@ -68,14 +68,20 @@ int Parser::countOperands(std::vector<Token> subTokens)
             return count;
         }
     }
-    throw GenericException("I dont know what this error would be... (from Parser::countOperands)", subTokens[0].index);
+    return count;
+    //throw GenericException("I dont know what this error would be... (from Parser::countOperands)", subTokens[0].index);
 }
 
 //Read next sublist of vectors
 void Parser::readTokens(std::vector<Token> subTokens, Node* parent, int pos)
 {
     // input: AND ( OR ( a b ) c )
-
+    
+    //test
+    if (countOperands(subTokens) > 1) {
+        throw GenericException("Too many operands provided. Only 1 expected :)", subTokens[0].index);
+    }
+    
     //int pos = 0;
     if (subTokens[pos].type == AND || subTokens[pos].type == OR) 
     {
