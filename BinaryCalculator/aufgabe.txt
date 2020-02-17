@@ -26,7 +26,8 @@ Aufgaben:
 Genauer gesagt:
 Die boolschen Ausdrücke werden folgendermaßen eingegeben:
 
-AND ( a OR b )
+AND ( OR ( a b ) )
+(die Leerzeichen werden ausschließlich zwischen Operanden erfordert.)
 
 Dabei sollen mindestens die folgenden Operatoren realisiert werden:
 

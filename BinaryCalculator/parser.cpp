@@ -289,8 +289,8 @@ std::vector<Token> Parser::getBracketContent(std::vector<Token> subTokens, int i
     {
         //SYNTACTICAL ERROR!!!
         //Expected opening bracket after operand
-        std::cout << "SYNTACTICAL ERROR!" << std::endl;
-        std::cout << "Expected opening bracket after operand" << std::endl;
+        //std::cout << "SYNTACTICAL ERROR!" << std::endl;
+        //std::cout << "Expected opening bracket after operand" << std::endl;
         throw GenericException("Expected opening bracket after operand", subTokens[index + 1].index);
     }
 

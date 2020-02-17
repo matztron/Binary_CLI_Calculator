@@ -54,33 +54,3 @@ void Btree::insert(Node* newNode, Node* parent /*, Token leftChild, Token rightC
         throw GenericException("Internal error. This has likely nothing to do with your input (Parent is satisified)", 0);
     }
 }
-
-/*void Btree::plotTree(Node * parent)
-{
-    //std::cout << "Hello I am the " << parent->token.type << " And those are my children:" << std::endl;
-
-    if (parent->left != NULL)
-    {
-        if (parent->left->token.type == VAR)
-        {
-            std::cout << "I am " << parent->token.type << " I have a left child called: " << parent->left->token.value << std::endl;
-        }
-        else
-        {
-            std::cout << "I am " << parent->token.type << " I have a left child called: " << parent->left->token.type << std::endl;
-        }
-        plotTree(parent->left);
-    }
-    if (parent->right != NULL)
-    {
-        if (parent->right->token.type == VAR)
-        {
-            std::cout << "I am " << parent->token.type << " I have a right child called: " << parent->right->token.value << std::endl;
-        }
-        else
-        {
-            std::cout << "I am " << parent->token.type << " I have a right child called: " << parent->right->token.type << std::endl;
-        }
-        plotTree(parent->right);
-    }
-}*/

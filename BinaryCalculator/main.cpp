@@ -32,7 +32,7 @@ int main(int argc, char const *argv[])
     
     std::cout << "Insert binary expression" << std::endl;
     //getline(cin, input);
-    input = "and(affe or(banene tofu))"; //(debug) input
+    input = "and( a not(b) )"; //(debug) input
     
     try
     {

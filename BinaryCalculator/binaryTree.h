@@ -9,14 +9,11 @@
 #ifndef _BINARY_TREE_H_
 #define _BINARY_TREE_H_
 
-#include <iostream>
+//#include <iostream>
 #include "token.h"
 #include "exception.h"
 
-//source:   https://gist.github.com/toboqus/def6a6915e4abd66e922
-//          https://www.geeksforgeeks.org/print-binary-tree-2-dimensions/
 using namespace std;
-
 
 class Node{
 public:
@@ -33,9 +30,11 @@ public:
 	Node *right;
 };
 
+
 class Btree{
 public:
 	Btree();
+    
 	~Btree();
 
 	void destroy_tree();
