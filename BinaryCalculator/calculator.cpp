@@ -19,40 +19,12 @@ Calculator::Calculator(int var_count, std::vector<Token> tokens) : table(var_cou
     
     //start computing first row
     computeRow_index = 0;
-    
-    //debug
-    //table.plotTable();
-    
 }
-
-//do this in main
-/*void Calculator::calculateAllRows()
-{
-    for (int i = 0; i < table.table_rows; i++) {
-        calculateBooleanValue()
-    }
-}*/
 
 //Calculate Parent and Children
 //INITIALLY HAND THIS FUNCTION THE LEFT CHILD OF ROOT BECAUSE ROOT IS A NONE TOKEN AND THEY AREN'T HANDLED!
 bool Calculator::calculateBooleanValue(Node* parent)
 {
-    /*if (parent->left != nullptr) {
-        if (parent->left->token.type == VAR)
-        {
-            //return wahrheitswert
-            return lookUpVarValue(parent->left->token);
-        }
-        return true;
-    }
-    if (parent->right != nullptr) {
-        if (parent->right->token.type == VAR)
-        {
-            //return wahrheitswert
-            return lookUpVarValue(parent->right->token);
-        }
-    }*/
-    
     if (parent->token.type == VAR)
     {
         return lookUpVarValue(parent->token);

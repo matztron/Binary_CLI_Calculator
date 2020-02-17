@@ -1,3 +1,11 @@
+//
+//  parser.cpp
+//  BinaryCalculator
+//
+//  Created by Matthias Musch on 06.02.20.
+//  Copyright © 2020 Matthias Musch. All rights reserved.
+//
+
 #include "parser.h"
 
 Parser::Parser(std::vector<Token> tokens_) 

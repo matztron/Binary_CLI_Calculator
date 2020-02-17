@@ -1,3 +1,11 @@
+//
+//  exception.cpp
+//  BinaryCalculator
+//
+//  Created by Matthias Musch on 06.02.20.
+//  Copyright © 2020 Matthias Musch. All rights reserved.
+//
+
 #ifndef _EXCEPTION_H_
 #define _EXCEPTION_H_
 

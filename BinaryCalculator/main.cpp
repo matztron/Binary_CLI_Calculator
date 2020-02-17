@@ -6,7 +6,8 @@
 //  Copyright © 2020 Matthias Musch. All rights reserved.
 //
 
-//Build with:
+//Instructions for building the project:
+//
 //[cmd] + [shift] + [b]
 //or
 //g++ -o tst main.cpp tokenizer.cpp token.cpp truthTable.cpp binaryTree.cpp parser.cpp calculator.cpp
@@ -29,45 +30,36 @@ int main(int argc, char const *argv[])
 {
     string input;
     
+    std::cout << "Insert binary expression" << std::endl;
     //getline(cin, input);
-    input = "and(a or(c d))"; //(debug) standard input <-that works
+    input = "and(affe or(banene tofu))"; //(debug) input
     
-    // Problem(s):
-    // * There can be stuff on global scope which doesn't mae sense
-    // * The stuff after the first expression will be ignored anyways
-    //   (since the left branch of the root node gets parsed)
-
     try
     {
         //Generate tokens
         Tokenizer tokenizer(input);
 
-        std::vector<Token> tst = tokenizer.collect();
+        //Get list of all tokens in input
+        std::vector<Token> tokens = tokenizer.collect();
 
-        //debug
-        /*std::cout << "Length of vector: " << tst.size() << std::endl;
-        for (size_t i = 0; i < tst.size(); i++)
-        {
-            std::cout << tst[i].value << " Type: " << tst[i].type << std::endl;
-        }
-        std::cout << "------------------" << std::endl;*/
-
+        //Hand tokens to a parser-object
+        Parser parser(tokens);
         
-        Parser parser(tst);
+        //Build parse-tree
+        parser.readTokens(tokens, parser.tree->root, 0);
         
-        parser.readTokens(tst, parser.tree->root, 0);
-        //parser.tree->plotTree(parser.tree->root);
+        //Generate a calculator
+        Calculator calc(parser.getVarCount(), tokens);
         
-        Calculator calc(parser.getVarCount(), tst);
-        
+        //Calculate result for each row
         for (int i = 0; i < calc.table.table_rows; i++)
         {
             bool result = calc.calculateBooleanValue(parser.tree->root->left);
             calc.table.resultColumn.push_back(result);
             calc.computeRow_index++;
-            //std::cout << "ENDRESULT: " << result << std::endl;
         }
         
+        //Plot the results that have been calculated
         calc.printResult();
         
     }
@@ -89,9 +81,9 @@ int main(int argc, char const *argv[])
 }
 
 //New TODO
-// 1. Make it operational <-
+// 1. Make it operational
 // 2. Make it possible to write both upper- and lowercase operators
-// 2. Make stuff private that can be private
+// 2. Make stuff private that can be private <-
 // 3. INtroduce destructors
 // 4. Cleanup
 // 5. Draw diagrams
