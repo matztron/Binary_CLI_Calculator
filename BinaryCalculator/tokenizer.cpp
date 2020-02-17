@@ -16,9 +16,6 @@ Tokenizer::Tokenizer(std::string input_)
     index = -1;
 }
 
-//Destructor
-//...
-
 //Generate a token
 Token Tokenizer::getToken() 
 {
@@ -27,7 +24,6 @@ Token Tokenizer::getToken()
 
     //Check if reached end of input string
     if (index >= input_length) {
-        //std::cout << "end of input!" << std::endl;
         //Reached end of input string (NONE symbolizes end of input)
         return Token(NONE,"0", index);
     }
@@ -61,15 +57,10 @@ Token Tokenizer::getToken()
     }
     
     std::string word = peekAlphabetic(index);
-    //to uppercase | not sure if I keep it...
+    
+    //Make input uppercase
     std::transform(word.begin(), word.end(),word.begin(), ::toupper);
     
-    //Debug
-    //std::cout << "---" << std::endl;
-    //std::cout << "current index: " << index << std::endl;
-    //std::cout << "current word: " << word << std::endl;
-
-    //todo here: make word all upperstring
 
     if (word == "AND") 
     {
@@ -116,7 +107,7 @@ Token Tokenizer::getToken()
 //Peek
 std::string Tokenizer::peekAlphabetic(int peekIndex)
 {
-    if (!isalpha(input[peekIndex]) /*&& input[peekIndex] != '(' && input[peekIndex] != ')'*/) 
+    if (!isalpha(input[peekIndex]))
     {
         //Return "nothing" and jump over the word
         index = peekIndex - 1;
@@ -140,6 +131,5 @@ std::vector<Token> Tokenizer::collect()
     {
         tokens.push_back(getToken());
     }
-    //std::cout << "fertig" << std::endl;
     return tokens;
 }

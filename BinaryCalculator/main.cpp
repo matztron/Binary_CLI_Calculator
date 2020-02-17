@@ -6,14 +6,15 @@
 //  Copyright © 2020 Matthias Musch. All rights reserved.
 //
 
-//Instructions for building the project:
+//Instructions for compiling the project:
 //
-//[cmd] + [shift] + [b]
-//or
+//In this folder execute:
 //g++ -o tst main.cpp tokenizer.cpp token.cpp truthTable.cpp binaryTree.cpp parser.cpp calculator.cpp
-
+//
 //debug with:
 //[cmd] + [shift] + [d]
+//[cmd] + [r]
+//
 
 #include <iostream>
 #include <string>
@@ -32,7 +33,7 @@ int main(int argc, char const *argv[])
     
     std::cout << "Insert binary expression" << std::endl;
     //getline(cin, input);
-    input = "and( a not(b) )"; //(debug) input
+    input = "not(and(a b))"; //(debug) input
     
     try
     {

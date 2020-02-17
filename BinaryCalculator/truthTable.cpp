@@ -30,8 +30,6 @@ bool** TruthTable::generateTable(int var_count)
     }
 
     return ary;
-    
-    // https://stackoverflow.com/questions/936687/how-do-i-declare-a-2d-array-in-c-using-new
 }
 
 void TruthTable::fillTable() 
@@ -46,10 +44,6 @@ void TruthTable::fillTable()
     // 1 0 1 | 5
     // 1 1 0 | 6
     // 1 1 1 | 7
-
-    //Debug
-    //std::cout << "Rows: " << table_rows << std::endl;
-    //std::cout << "Columns: " << table_columns << std::endl;
     
     for (int row = 0; row < table_rows; row++)
     {
@@ -70,31 +64,6 @@ void TruthTable::fillTable()
         }   
     }
 }
-
-//Plot the table for displaying the calculation result
-/*void TruthTable::plotTable()
-{
-    //┌─┬─┐  ╔══╦══╗ ╒══╤══╕ ╓──╥──╖
-    //│1│0│  ║  ║  ║ │  │  │ ║  ║  ║
-    //├─┼─┤  ╠══╬══╣ ╞══╪══╡ ╟──╫──╢
-    //│0│1│  ║  ║  ║ │  │  │ ║  ║  ║
-    //└─┴─┘  ╚══╩══╝ ╘══╧══╛ ╙──╨──╜
-    
-    //Draw varaiable head
-    
-    for (size_t i = 0; i < table_rows; i++)
-    {
-        //draw the delimiter line for prev. row
-        std::cout << "---------------" << std::endl;
-        
-        //From right to left
-        for (size_t j = 0; j < table_columns; j++)
-        {
-            std::cout << "|" << table[i][j] << "|";
-        }
-        std::cout << std::endl;
-    }
-}*/
 
 //Give back one cell of the truthTable
 bool TruthTable::getElement(int row, int col)
