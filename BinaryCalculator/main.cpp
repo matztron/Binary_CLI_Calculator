@@ -33,7 +33,7 @@ int main(int argc, char const *argv[])
     
     std::cout << "Insert binary expression" << std::endl;
     //getline(cin, input);
-    input = "not(and(a b))"; //(debug) input
+    input = "or(and(a b) c)"; //(debug) input
     
     try
     {
@@ -55,6 +55,7 @@ int main(int argc, char const *argv[])
         //Calculate result for each row
         for (int i = 0; i < calc.table.table_rows; i++)
         {
+            //The root node only has left-children
             bool result = calc.calculateBooleanValue(parser.tree->root->left);
             calc.table.resultColumn.push_back(result);
             calc.computeRow_index++;

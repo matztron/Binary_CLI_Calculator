@@ -21,11 +21,10 @@ class Parser
         Parser(std::vector<Token> tokens_);
         Btree *tree;
 
+        //Read tokens and build binaryTree accordingly
         void readTokens(std::vector<Token> subTokens, Node* parent, int pos);
 
         int getVarCount();
-        //void addChildren();
-
 
     private:
         std::vector<Token> tokens;
@@ -39,7 +38,7 @@ class Parser
         //Returns the sublist of tokens inside the brackets
         std::vector<Token> getBracketContent(std::vector<Token> subTokens, int index);
     
-        //
+        //Get the individual operators
         void getMonoOperator(std::vector<Token> subTokens, Node* parent);
         void getDualOperator(std::vector<Token> subTokens, Node* parent);
 

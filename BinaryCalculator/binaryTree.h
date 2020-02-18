@@ -19,11 +19,9 @@ public:
     
     Node()
     {
-        //token = NULL ?
         left = NULL;
         right = NULL;
     }
-    //int value;
 	Token token;
 	Node *left;
 	Node *right;

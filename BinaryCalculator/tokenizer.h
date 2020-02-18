@@ -15,7 +15,7 @@
 #include "token.h"
 
 //Debug
-#include <iostream>
+//#include <iostream>
 //---
 
 class Tokenizer 

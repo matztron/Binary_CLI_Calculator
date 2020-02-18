@@ -8,6 +8,7 @@
 
 #include "parser.h"
 
+//Constructor
 Parser::Parser(std::vector<Token> tokens_) 
 {
     tokens = tokens_;
@@ -17,6 +18,9 @@ Parser::Parser(std::vector<Token> tokens_)
 //Get the number of variables in the user input
 int Parser::countVariables() 
 {
+    //Example:
+    //input: AND(a OR(a b))
+    //output: 2
     std::vector<string> alreadyFoundVars;
     int count = 0;
     for (size_t i = 0; i < tokens.size(); i++)
@@ -41,6 +45,7 @@ int Parser::countVariables()
     return count;
 }
 
+//Get variable count externally
 int Parser::getVarCount()
 {
     return countVariables();
@@ -50,8 +55,9 @@ int Parser::getVarCount()
 int Parser::countOperands(std::vector<Token> subTokens)
 {
     int count = 0;
-    // Get this: NOT(b) OR(b d) d AND ( s a )
-    // return 4
+    //Example:
+    //input: NOT(b) OR(b d) d AND ( s a )
+    //output: 4
     for (int i = 0; i < subTokens.size(); i++) {
         //If it is anything with brackets:
         if (subTokens[i].type == AND || subTokens[i].type == OR || subTokens[i].type == NOT) {
@@ -82,7 +88,9 @@ int Parser::countOperands(std::vector<Token> subTokens)
 //Read next sublist of vectors
 void Parser::readTokens(std::vector<Token> subTokens, Node* parent, int pos)
 {
+    //Example:
     // input: AND ( OR ( a b ) c )
+    // output: builds tree from that
     
     if (countOperands(subTokens) > 1) {
         throw GenericException("Too many operands provided. Only 1 expected :)", subTokens[0].index);
@@ -90,7 +98,7 @@ void Parser::readTokens(std::vector<Token> subTokens, Node* parent, int pos)
     
     if (subTokens[pos].type == AND || subTokens[pos].type == OR) 
     {
-        std::vector<Token> bracketContent = getBracketContent(subTokens, pos); //hand over: ( OR ( a b ) c )
+        std::vector<Token> bracketContent = getBracketContent(subTokens, pos); //Example: hand over: ( OR ( a b ) c )
         
         Node* newNode = new Node;
         newNode->token = subTokens[pos];
@@ -127,9 +135,9 @@ void Parser::readTokens(std::vector<Token> subTokens, Node* parent, int pos)
     }
     else
     {
-        // what should I do now?
+        //This can not happen since there aren't any additional token-types
+        //They can however easily be added in the tokeinzer and token classes
         throw GenericException("Unhandled token in input", subTokens[0].index);
-        //std::cout << "Help!" << std::endl;
     }
     
 }
@@ -187,15 +195,15 @@ std::vector<Token> Parser::getFirstOperand(std::vector<Token> subTokens)
     }
     else
     {
-        //there could be a bracket to ignore... useless brackets or sth... -> is an error now
-        //some error cases
-        throw GenericException("Unexpected symbol", subTokens[0].index);
+        //This can not happen since there aren't any additional token-types
+        //They can however easily be added in the tokeinzer and token classes
+        throw GenericException("Unhandled token in input", subTokens[0].index);
     }
 }
 
 std::vector<Token> Parser::getSecondOperand(std::vector<Token> subTokens) 
 {
-    //skip first operand
+    //Skip first operand
     int endOfFirstOp = 0;
     if (subTokens[0].type == AND || subTokens[0].type == OR || subTokens[0].type == NOT)
     {
@@ -206,9 +214,10 @@ std::vector<Token> Parser::getSecondOperand(std::vector<Token> subTokens)
         endOfFirstOp = 0;
     }
     
+    //Check second operand
     if (subTokens[endOfFirstOp + 1].type == AND || subTokens[endOfFirstOp + 1].type == OR || subTokens[endOfFirstOp + 1].type == NOT)
     {
-        //traverse right till closing bracket
+        //Traverse right till closing bracket
         int endOfSecOp = findClosingBracket(endOfFirstOp + 1, subTokens); // +1 for next Operator
         return std::vector<Token>(subTokens.begin() + endOfFirstOp + 1, subTokens.end() - (subTokens.size() - endOfSecOp - 1));
     }
@@ -230,7 +239,7 @@ std::vector<Token> Parser::getSecondOperand(std::vector<Token> subTokens)
     else if (subTokens[endOfFirstOp + 1].type == NONE)
     {
         //... NONE
-        throw GenericException("Operator requires 2 arguments but only 1 was provided", subTokens[endOfFirstOp + 1].index); //this is a hack: +1 is the artificial NONE token which has an index of 0...
+        throw GenericException("Operator requires 2 arguments but only 1 was provided", subTokens[endOfFirstOp + 1].index); //This is a hack: +1 is the artificial NONE token which has an index of 0 (for the error message)
     }
     else
     {
@@ -243,7 +252,7 @@ int Parser::findClosingBracket(int operatorIndex , std::vector<Token> subTokens)
     //Given:    AND ( NOT ( b ) OR ( b d ) ) and openingBracketIndex is 3
     //Returns: 5       |      |
     
-    //check if at 0th index is a opening bracket. This needs to be the case for this function to be justified...
+    //Check if at 0th index is a opening bracket. This needs to be the case for this function to be justified...
     if (subTokens[operatorIndex + 1].type == BRC_OPEN)
     {
         int bracketCount = 0;
@@ -263,11 +272,12 @@ int Parser::findClosingBracket(int operatorIndex , std::vector<Token> subTokens)
                 return i;
             }
         }
-        //if we reach here the brackets don't add up
+        //The brackets don't add up
         throw GenericException("No curresponding closing bracket found", subTokens[operatorIndex + 1].index);
     }
     else
     {
+        //There was no opening bracket at the beginning
         throw GenericException("Expected opening bracket after operand", subTokens[operatorIndex + 1].index);
     }
 }
@@ -283,9 +293,11 @@ std::vector<Token> Parser::getBracketContent(std::vector<Token> subTokens, int i
     }
 
     //Go to the right till there is the corresponding closing bracket ')'
+    //Increment for opening brackets
+    //Decrement for closing brackets
+    
     int brackets = 0;
-    //increment for opening brackets
-    //decrement for closing brackets
+    
     for (int i = index + 1; i < subTokens.size(); i++)
     {
         if (subTokens[i].type == BRC_OPEN) 
@@ -301,7 +313,7 @@ std::vector<Token> Parser::getBracketContent(std::vector<Token> subTokens, int i
 
         if (brackets == 0) 
         {
-            //the right bracket to close off the original one has been found
+            //The right bracket to close off the original one has been found
             std::vector<Token> bracket_content = std::vector<Token>(subTokens.begin() + index + 2, subTokens.end() - (subTokens.size() - i));
             
             //Add an artificial NONE Token at the end to symbolise end of input

@@ -6,15 +6,15 @@
 //  Copyright © 2020 Matthias Musch. All rights reserved.
 //
 
-#ifndef calculator_hpp
-#define calculator_hpp
+#ifndef _CALCULATOR_H_
+#define _CALCULATOR_H_
 
 #include <vector>
 #include "truthTable.h"
 #include "binaryTree.h"
 #include "exception.h"
 
-//To match VARS with the right boolean values
+//To match VARS with the corresponding boolean values
 typedef struct
 {
     Token token;
@@ -27,10 +27,10 @@ public:
     
     Calculator(int var_count, std::vector<Token> tokens);
     
-    //the truth table
+    //The truth table
     TruthTable table;
     
-    int currentLine; //current line in TruthTable
+    int currentLine; //Current line in TruthTable
     
     //Get boolean value of token in context of current truthTable row
     bool lookUpVarValue(Token token);
@@ -43,17 +43,17 @@ public:
     //Holds the VAR and truthValue (col_index)
     std::vector<Tupel> tupels;
     
-    //current row of truthTable beeing computed
+    //Current row of truthTable beeing computed
     int computeRow_index;
     
 private:
-    //Traverse tree and remember Variables
+    //Traverse input and remember Variables
     void fillTupels(std::vector<Token> tokens);
     
-    //Gates:
+    //Logic-Gates:
     bool and_gate(bool op_one, bool op_two);
     bool or_gate(bool op_one, bool op_two);
     bool not_gate(bool op);
 };
 
-#endif /* calculator_hpp */
+#endif // _CALCULATOR_H_

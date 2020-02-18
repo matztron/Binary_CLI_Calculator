@@ -11,6 +11,8 @@
 
 #include <string>
 
+//All the types that are supported
+//It is fairly easy to expand this calculator with more functions
 typedef enum
 {
     VAR         = 0,
@@ -35,7 +37,7 @@ class Token
         Token(TokenType type, std::string value, int index);
 
         TokenType type;
-        std::string value;
+        std::string value; //For the variable name
         int index;
 };
 

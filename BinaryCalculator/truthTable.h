@@ -16,15 +16,15 @@
 class TruthTable
 {
 private:
-    //holds the input combinations
-    //bool** table;
-
+    
     bool** generateTable(int var_count);
 
+    //2D array: Holds all variable value combinations
     bool** table;
     
 
 public:
+    //Dimensions of table
     int table_rows;
     int table_columns;
     
@@ -32,11 +32,11 @@ public:
     std::vector<bool> resultColumn;
     
     //Fills table variables with all combinations of 0s and 1s
-    //by counting upwards in binary
+    //Filled by counting upwards in binary
     void fillTable();
 
     //Debug style. !!!IMPROVE OUTPUT!!!
-    void plotTable();
+    //void plotTable();
 
     //Get an element from the table
     bool getElement(int row, int col);

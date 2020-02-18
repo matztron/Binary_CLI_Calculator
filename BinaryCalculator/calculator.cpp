@@ -27,6 +27,7 @@ bool Calculator::calculateBooleanValue(Node* parent)
 {
     if (parent->token.type == VAR)
     {
+        //Directly return the boolean value
         return lookUpVarValue(parent->token);
     }
     else if (parent->token.type == NOT)
@@ -64,26 +65,24 @@ bool Calculator::calculateBooleanValue(Node* parent)
 bool Calculator::lookUpVarValue(Token token)
 {
     int col_index;
-    //iterate through Tupels
+    //Iterate through Tupels
     for (int i = 0; i < tupels.size(); i++) {
         
         if (tupels[i].token.value == token.value)
         {
-            //found the token
+            //Found the token
             col_index = i;
-            //look up boolean value in TruthTable (and return it)
+            //Look up boolean value in TruthTable (and return it)
             return table.getElement(computeRow_index, col_index);
         }
     }
-    //error case
-    //the variable I was looking for could not be found!
+    //The variable value could not be found!
     throw GenericException("Internal error. This has likely nothing to do with your input", token.index);
 }
 
 void Calculator::fillTupels(std::vector<Token> tokens)
 {
     int count = 0;
-    //std::vector<string> alreadyFoundVars;
     
     for (int i = 0; i < tokens.size(); i++) {
         //If we found a VAR

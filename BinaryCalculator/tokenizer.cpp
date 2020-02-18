@@ -40,6 +40,7 @@ Token Tokenizer::getToken()
         else
         {
             //Reached end of input
+            //Generate only none tokens from now on
             return Token(NONE,"0", index);
         }
     }

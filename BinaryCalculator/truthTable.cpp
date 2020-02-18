@@ -53,12 +53,12 @@ void TruthTable::fillTable()
             if (std::pow(2,col) <= difference) 
             {
                 difference -= std::pow(2,col);
-                //Insert the value (for row) the other way around
+                //Insert the value (for row) the other way around (LSB at end of array)
                 table[row][table_columns - col - 1] = true;
             }
             else
             {
-                //Insert the value (for row) the other way around
+                //Insert the value (for row) the other way around (LSB at end of array)
                 table[row][table_columns - col - 1] = false;
             }   
         }   
