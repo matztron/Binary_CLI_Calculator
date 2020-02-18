@@ -15,7 +15,13 @@ TruthTable::TruthTable(int var_count)
 
 TruthTable::~TruthTable()
 {
-    delete table;
+    //Free memory of every array in array
+    for (int i = 0; i < table_rows; ++i)
+    {
+        delete[] table[i];
+    }
+    //Free memory of the array of arrays
+    delete[] table;
 }
 
 bool** TruthTable::generateTable(int var_count) 
