@@ -26,29 +26,28 @@ class Calculator
 public:
     
     Calculator(int var_count, std::vector<Token> tokens);
-    
+        
     //The truth table
     TruthTable table;
     
-    int currentLine; //Current line in TruthTable
-    
-    //Get boolean value of token in context of current truthTable row
-    bool lookUpVarValue(Token token);
-
     //Traverse tree and calculate each parent. Return global truth value
     bool calculateBooleanValue(Node* parent);
     
     void printResult();
     
-    //Holds the VAR and truthValue (col_index)
-    std::vector<Tupel> tupels;
-    
     //Current row of truthTable beeing computed
     int computeRow_index;
     
 private:
+    
+    //Get boolean value of token in context of current truthTable row
+    bool lookUpVarValue(Token token);
+    
     //Traverse input and remember Variables
     void fillTupels(std::vector<Token> tokens);
+    
+    //Holds the VAR and truthValue (col_index)
+    std::vector<Tupel> tupels;
     
     //Logic-Gates:
     bool and_gate(bool op_one, bool op_two);

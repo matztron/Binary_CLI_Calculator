@@ -1,5 +1,5 @@
 //
-//  tokenizer.hpp
+//  tokenizer.h
 //  BinaryCalculator
 //
 //  Created by Matthias Musch on 06.02.20.

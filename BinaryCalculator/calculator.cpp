@@ -210,6 +210,9 @@ void Calculator::printResult()
     std::cout << "┘" << std::endl;
 }
 
+//Logic gates:
+
+//And
 bool Calculator::and_gate(bool op_one, bool op_two)
 {
     if (op_one == true && op_two == true) {
@@ -221,6 +224,7 @@ bool Calculator::and_gate(bool op_one, bool op_two)
     }
 }
 
+//Or
 bool Calculator::or_gate(bool op_one, bool op_two)
 {
     if (op_one == false && op_two == false) {
@@ -232,6 +236,7 @@ bool Calculator::or_gate(bool op_one, bool op_two)
     }
 }
 
+//Not
 bool Calculator::not_gate(bool op)
 {
     if (op == true)
