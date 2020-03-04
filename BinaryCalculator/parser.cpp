@@ -15,6 +15,12 @@ Parser::Parser(std::vector<Token> tokens_)
     tree = new Btree();
 }
 
+//Destructor
+Parser::~Parser()
+{
+    delete tree;
+}
+
 //Get the number of variables in the user input
 int Parser::countVariables() 
 {

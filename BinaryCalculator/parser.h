@@ -19,6 +19,7 @@ class Parser
     public:
         //List of user-inputted tokens
         Parser(std::vector<Token> tokens_);
+        ~Parser();
         Btree *tree;
 
         //Read tokens and build binaryTree accordingly

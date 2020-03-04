@@ -32,8 +32,8 @@ int main(int argc, char const *argv[])
     string input;
     
     std::cout << "Insert binary expression" << std::endl;
-    //getline(cin, input);
-    input = "or(and(affe banane) kafka)"; //(debug) input
+    getline(cin, input);
+    //input = "or(and(affe banane) kafka)"; //(debug) input
     
     try
     {
@@ -67,9 +67,9 @@ int main(int argc, char const *argv[])
     }
     catch(const GenericException& e)
     {
-        cout << "There was an error calculating your input." << endl;
+        //cout << "There was an error calculating your input." << endl;
         cout << e.what() << endl;
-        cout << "The character at position \033[1;31m" << e.position + 1 << "\033[0m of your input is faulty." << endl;
+        cout << "Error occured close to position \033[1;31m" << e.position + 1 << "\033[0m of your input." << endl;
         cout << input << endl;
 
         //Print spaces before faulty input
