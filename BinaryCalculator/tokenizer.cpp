@@ -7,6 +7,7 @@
 //
 
 #include "tokenizer.h"
+#include <algorithm>
 
 //Constructor
 Tokenizer::Tokenizer(std::string input_) 
