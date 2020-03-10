@@ -140,7 +140,7 @@ void Calculator::printResult()
         }
         if (i < colWidths.size()-1)
         {
-            rowDelimiter.append("┼"); //┼
+            rowDelimiter.append("+"); //┼
         }
     }
     rowDelimiter.append("+"); //┤
@@ -204,7 +204,7 @@ void Calculator::printResult()
         }
         if (i < colWidths.size()-1)
         {
-            std::cout << "┴"; //┴
+            std::cout << "+"; //┴
         }
     }
     std::cout << "+" << std::endl; //┘
