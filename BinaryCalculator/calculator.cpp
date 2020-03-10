@@ -133,42 +133,42 @@ void Calculator::printResult()
     colWidths.push_back(6); //6 is the length of the string 'RESULT'
     
     //Build delimiter line
-    rowDelimiter.append("├");
+    rowDelimiter.append("+"); //├
     for (int i = 0; i < colWidths.size(); i++) {
         for (int j = 0; j < colWidths[i]; j++) {
-            rowDelimiter.append("─");
+            rowDelimiter.append("-"); //─
         }
         if (i < colWidths.size()-1)
         {
-            rowDelimiter.append("┼");
+            rowDelimiter.append("┼"); //┼
         }
     }
-    rowDelimiter.append("┤");
+    rowDelimiter.append("+"); //┤
     
     //Print upper border
-    std::cout << "┌";
+    std::cout << "+"; //┌
     for (int i = 0; i < colWidths.size(); i++)
     {
         for (int j = 0; j < colWidths[i]; j++)
         {
-            std::cout << "─";
+            std::cout << "-"; //─
         }
         if (i < colWidths.size()-1)
         {
-            std::cout << "┬";
+            std::cout << "+"; //┬
         }
     }
-    std::cout << "┐" << std::endl;
+    std::cout << "+" << std::endl; //┐
     
     //Print headline
-    std::cout << "│";
+    std::cout << "|"; //│
     for (int i = 0; i < tupels.size(); i++)
     {
         //Print a VAR
-        std::cout << tupels[i].token.value << "│";
+        std::cout << tupels[i].token.value << "|"; //│
         
     }
-    std::cout << "RESULT" << "│";
+    std::cout << "RESULT" << "|"; //│
     std::cout << std::endl;
     
     //Print data with results at the end
@@ -180,34 +180,34 @@ void Calculator::printResult()
         //From right to left
         for (int j = 0; j < table.table_columns; j++)
         {
-            std::cout << "│";
+            std::cout << "|"; //│
             std::cout << table.getElement(i, j);
             for (int k = 1; k < colWidths[j]; k++) {
                 std::cout << " ";
             }
         }
-        std::cout << "│";
+        std::cout << "|"; //│
         std::cout << table.resultColumn[i];
         for (int k = 1; k < colWidths.back(); k++) {
             std::cout << " ";
         }
-        std::cout << "│" << std::endl;
+        std::cout << "|" << std::endl; //│
     }
     
     //Print lower border
-    std::cout << "└";
+    std::cout << "+"; //└
     for (int i = 0; i < colWidths.size(); i++)
     {
         for (int j = 0; j < colWidths[i]; j++)
         {
-            std::cout << "─";
+            std::cout << "-"; //─
         }
         if (i < colWidths.size()-1)
         {
-            std::cout << "┴";
+            std::cout << "┴"; //┴
         }
     }
-    std::cout << "┘" << std::endl;
+    std::cout << "+" << std::endl; //┘
 }
 
 //Logic gates:
