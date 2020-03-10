@@ -1,6 +1,6 @@
 # Binary_CLI_Calculator
 Write stuff like: and(a b) or not(and(or(a b) c)) and get a truth-table back.
-AT THE MOMENT IT ONLY SUPPORTS AND, OR, NOT
+**At the moment this calculator supports AND, OR, NOT**
 
 ## Compilation
 In the directory of the main.cpp file execute:
